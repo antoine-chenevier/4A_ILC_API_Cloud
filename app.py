@@ -57,5 +57,13 @@ def operation():
 
             return str(result) + " " + str(id_operation)
 
+@app.route('/operation/<id>', methods=['GET'])
+def operationId(id):
+    if request.method == 'GET':
+        for i in listOperation:
+            if i[0] == int(id):
+                return str(i[1])
+    return "error"
+
 if __name__ =='__main__':
     app.run()
