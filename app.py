@@ -13,6 +13,7 @@ listOperation = []
 
 @app.route('/operation', methods=['POST'])
 def operation():
+
     if request.method == 'POST':
 
         global id_operation
@@ -29,7 +30,7 @@ def operation():
             value = (id_operation,result)
             listOperation.append(value)
 
-            return str(result) + " " + str(id_operation)
+            return str(id_operation)+"\n"
         elif operation == 'sub':
             result = a - b
             id_operation = id_operation + 1
@@ -37,7 +38,7 @@ def operation():
             value = (id_operation,result)
             listOperation.append(value)
 
-            return str(result) + " " + str(id_operation)
+            return str(id_operation)+"\n"
 
         elif operation == 'mul':
             result = a * b
@@ -46,7 +47,7 @@ def operation():
             value = (id_operation,result)
             listOperation.append(value)
 
-            return str(result) + " " + str(id_operation)
+            return str(id_operation)+"\n"
 
         elif operation == 'div':
             result = a / b
@@ -55,15 +56,19 @@ def operation():
             value = (id_operation,result)
             listOperation.append(value)
 
-            return str(result) + " " + str(id_operation)
+            return str(id_operation)+"\n"
 
 @app.route('/operation/<id>', methods=['GET'])
 def operationId(id):
+
     if request.method == 'GET':
+
         for i in listOperation:
+
             if i[0] == int(id):
-                return str(i[1])
-    return "error"
+
+                return str(i[1]) +"\n"
+    return "error \n"
 
 if __name__ =='__main__':
     app.run()
