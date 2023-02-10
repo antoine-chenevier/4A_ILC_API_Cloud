@@ -6,6 +6,7 @@ from datetime import datetime
 import pandas as pd
 
 app = Flask(__name__)
+
 id_operation = 0
 listOperation = []
 #operation = ("typeOperation", "a", "b")
@@ -13,6 +14,8 @@ listOperation = []
 @app.route('/operation', methods=['POST'])
 def operation():
     if request.method == 'POST':
+
+        global id_operation
 
         operation=str(request.form.get("operation"))    
         a=int(request.form.get("a"))
@@ -26,7 +29,7 @@ def operation():
             value = (id_operation,result)
             listOperation.append(value)
 
-            return str(result + id_operation)
+            return str(result) + " " + str(id_operation)
         elif operation == 'sub':
             result = a - b
             id_operation = id_operation + 1
@@ -34,7 +37,8 @@ def operation():
             value = (id_operation,result)
             listOperation.append(value)
 
-            return str(result + id_operation)
+            return str(result) + " " + str(id_operation)
+
         elif operation == 'mul':
             result = a * b
             id_operation = id_operation + 1
@@ -42,7 +46,7 @@ def operation():
             value = (id_operation,result)
             listOperation.append(value)
 
-            return str(result + id_operation)
+            return str(result) + " " + str(id_operation)
 
         elif operation == 'div':
             result = a / b
@@ -51,7 +55,7 @@ def operation():
             value = (id_operation,result)
             listOperation.append(value)
 
-            return str(result + id_operation)
+            return str(result) + " " + str(id_operation)
 
 if __name__ =='__main__':
     app.run()
