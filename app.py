@@ -4,56 +4,54 @@
 from flask import Flask, request
 from datetime import datetime
 import pandas as pd
+
 app = Flask(__name__)
-id = 0
-operation = ('typeOperation', 'a', 'b')
-@app.route('/add', methods=['POST'])
-def add():
-    data = request.get_json()
-    a = data['a']
-    b = data['b']
-    result = a + b
-    return str(result)
+id_operation = 0
+listOperation = []
+#operation = ("typeOperation", "a", "b")
 
-@app.route('/sub', methods=['POST'])
-def sub():
-    data = request.get_json()
-    a = data['a']
-    b = data['b']
-    result = a - b
-    return str(result)
-
-@app.route('/mul', methods=['POST'])
-def mul():
-    data = request.get_json()
-    a = data['a']
-    b = data['b']
-    result = a * b
-    return str(result)
-
-@app.route('/div', methods=['POST'])
-def div():
-    data = request.get_json()
-    a = data['a']
-    b = data['b']
-    result = a / b
-    return str(result)
-
-@app.route('/operation', methods=['GET'])
+@app.route('/operation', methods=['POST'])
 def operation():
-    if operation[0] == 'add':
-        result = operation[1] + operation[2]
-        id = id + 1
-        return str(result + id)
-    elif operation[0] == 'sub':
-        result = operation[1] - operation[2]
-        id = id + 1
-        return str(result + id)
-    elif operation[0] == 'mul':
-        result = operation[1] * operation[2]
-        id = id + 1
-        return str(result + id)
-    elif operation[0] == 'div':
-        result = operation[1] / operation[2]
-        id = id + 1
-        return str(result + id)
+    if request.method == 'POST':
+
+        operation=str(request.form.get("operation"))    
+        a=int(request.form.get("a"))
+        b=int(request.form.get("b"))
+
+        if operation == 'add':
+            result = a + b
+           
+            id_operation+=1
+
+            value = (id_operation,result)
+            listOperation.append(value)
+
+            return str(result + id_operation)
+        elif operation == 'sub':
+            result = a - b
+            id_operation = id_operation + 1
+
+            value = (id_operation,result)
+            listOperation.append(value)
+
+            return str(result + id_operation)
+        elif operation == 'mul':
+            result = a * b
+            id_operation = id_operation + 1
+
+            value = (id_operation,result)
+            listOperation.append(value)
+
+            return str(result + id_operation)
+
+        elif operation == 'div':
+            result = a / b
+            id_operation = id_operation + 1
+
+            value = (id_operation,result)
+            listOperation.append(value)
+
+            return str(result + id_operation)
+
+if __name__ =='__main__':
+    app.run()
