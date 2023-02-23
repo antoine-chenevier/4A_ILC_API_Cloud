@@ -5,6 +5,9 @@ from flask import Flask, request
 from datetime import datetime
 import pandas as pd
 
+import redis
+r = redis.Redis(host='localhost', port=6379, db=0)
+
 app = Flask(__name__)
 
 id_operation = 0
@@ -17,6 +20,7 @@ def operation():
     if request.method == 'POST':
 
         global id_operation
+        global r
 
         operation=str(request.form.get("operation"))    
         a=int(request.form.get("a"))
@@ -29,6 +33,7 @@ def operation():
 
             value = (id_operation,result)
             listOperation.append(value)
+            r.set(id_operation, result)
 
             return str(id_operation)+"\n"
         elif operation == 'sub':
@@ -37,6 +42,7 @@ def operation():
 
             value = (id_operation,result)
             listOperation.append(value)
+            r.set(id_operation, result)
 
             return str(id_operation)+"\n"
 
@@ -46,6 +52,7 @@ def operation():
 
             value = (id_operation,result)
             listOperation.append(value)
+            r.set(id_operation, result)
 
             return str(id_operation)+"\n"
 
@@ -55,6 +62,7 @@ def operation():
 
             value = (id_operation,result)
             listOperation.append(value)
+            r.set(id_operation, result)
 
             return str(id_operation)+"\n"
 
@@ -66,8 +74,8 @@ def operationId(id):
         for i in listOperation:
 
             if i[0] == int(id):
-
-                return str(i[1]) +"\n"
+                
+                return r.get(id)
     return "error \n"
 
 if __name__ =='__main__':
