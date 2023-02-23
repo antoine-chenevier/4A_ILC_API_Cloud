@@ -32,13 +32,25 @@ Creates a new tweet. The request should contain JSON data with the following fie
 
 Returns a JSON object with the details of the new tweet.
 
+```bash
+curl -X POST http://localhost:5000/tweet
+```
+
 #### `GET /tweets`
 
 Returns a JSON object with all of the tweets that have been created.
 
+```bash
+curl -X GET http://localhost:5000/tweets
+```
+
 #### `GET /tweets/<user>`
 
 Returns a JSON object with all of the tweets created by a specific user.
+
+```bash
+curl -X GET http://localhost:5000/tweets/<user>
+```
 
 #### `POST /saveTweet`
 
@@ -48,6 +60,10 @@ Saves a tweet in Redis. The request should contain JSON data with the following 
 - `message`: The content of the tweet.
 
 Returns a JSON object with a success message.
+
+```bash
+curl -X POST http://localhost:5000/saveTweet
+```
 
 #### `POST /attributeTweet`
 
@@ -59,6 +75,10 @@ Retrieves the tweet from Redis and creates a new tweet with the same content, at
 
 Returns a JSON object with the details of the new tweet.
 
+```bash
+curl -X POST http://localhost:5000/attributeTweet
+```
+
 #### `POST /retweet`
 
 Retweets a tweet. The request should contain JSON data with the following field:
@@ -69,6 +89,14 @@ Retrieves the tweet from Redis and creates a new tweet with the same content, at
 
 Returns a JSON object with the details of the new tweet.
 
+```bash
+curl -X POST http://localhost:5000/retweet
+```
+
 #### `GET /tweetsHashtag/<hashtag>`
 
 Returns a JSON object with all of the tweets that contain the specified hashtag.
+
+```bash
+curl -X GET http://localhost:5000/tweetsHashtag/<hashtag>
+```
