@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Flask Twitter Clone
 
 This is a simple Flask app that implements a Twitter-like functionality. Users can create and view tweets, save and retweet existing tweets, and view tweets by hashtag.
@@ -74,6 +74,3 @@ Returns a JSON object with the details of the new tweet.
 #### `GET /tweetsHashtag/<hashtag>`
 
 Returns a JSON object with all of the tweets that contain the specified hashtag.
-=======
-# ILC API CLOUD COMPUTONG
->>>>>>> 2e11c420f71706b402bcc265db35c6649c5ba8fa
