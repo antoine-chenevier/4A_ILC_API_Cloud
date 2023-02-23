@@ -13,11 +13,9 @@ To use this app, you'll need the following dependencies:
 
 To install them using pip, run:
 
-
 ## Usage
 
 To start the app, run the following command in your terminal:
-
 
 The app will be running at `http://localhost:5000/`.
 
