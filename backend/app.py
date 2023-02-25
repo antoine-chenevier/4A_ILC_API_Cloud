@@ -31,7 +31,7 @@ def tweet():
     #  return the operation
     return operation
 
-# tweet 
+# tweetTest
 @app.route('/tweetTest', methods=['POST'])
 def tweetTest():
     global id_operation
@@ -51,6 +51,7 @@ def tweetTest():
     }
     #  add the operation to the list
     listOperation.append(operation)
+    r.add(user, message)
     #  return the operation
     return operation
 
