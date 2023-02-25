@@ -11,28 +11,9 @@ id_operation = 0
 listOperation = []
 
 #  create a twitter like !
+
+# tweet
 @app.route('/tweet', methods=['POST'])
-def tweet():
-    global id_operation
-    global listOperation
-
-    #  get the data from the request
-    data = request.get_json()
-    #  create a new operation
-    id_operation += 1
-    operation = {
-        "id": id_operation,
-        "user": data["user"],
-        "message": data["message"],
-        "date": datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    }
-    #  add the operation to the list
-    listOperation.append(operation)
-    #  return the operation
-    return operation
-
-# tweetTest
-@app.route('/tweetTest', methods=['POST'])
 def tweetTest():
     global id_operation
     global listOperation
@@ -71,23 +52,24 @@ def tweetsUser(user):
 @app.route('/saveTweet', methods=['POST'])
 def saveTweet():
     #  get the data from the request
-    data = request.get_json()
+    user = str(request.form.get("user"))
+    message=str(request.form.get("message"))
     #  save the tweet in redis
-    r.set(data["user"], data["message"])
+    r.set(user,message)
     return {"message": "tweet saved"}
 
 # attribute a tweet to a user
 @app.route('/attributeTweet', methods=['POST'])
 def attributeTweet():
     #  get the data from the request
-    data = request.get_json()
+    user = str(request.form.get("user"))
     #  get the tweet from redis
-    tweet = r.get(data["user"])
+    tweet = r.get(user)
     #  create a new operation
     id_operation += 1
     operation = {
         "id": id_operation,
-        "user": data["user"],
+        "user": user,
         "message": tweet.decode("utf-8"),
         "date": datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     }
@@ -100,14 +82,14 @@ def attributeTweet():
 @app.route('/retweet', methods=['POST'])
 def retweet():
     #  get the data from the request
-    data = request.get_json()
+    user = str(request.form.get("user"))
     #  get the tweet from redis
-    tweet = r.get(data["user"])
+    tweet = r.get(user)
     #  create a new operation
     id_operation += 1
     operation = {
         "id": id_operation,
-        "user": data["user"],
+        "user": user,
         "message": tweet.decode("utf-8"),
         "date": datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     }
