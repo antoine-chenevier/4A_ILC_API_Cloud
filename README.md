@@ -17,8 +17,6 @@ This is the ILC 4A API Cloud. It is a cloud-based API that allows you to access 
 - Python 3.6 or higher
 - Pip
 
-### Installation
-
 1. Clone the repository
 2. Install the requirements
 3. Run the server

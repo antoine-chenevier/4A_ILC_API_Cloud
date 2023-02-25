@@ -31,6 +31,29 @@ def tweet():
     #  return the operation
     return operation
 
+# tweet 
+@app.route('/tweetTest', methods=['POST'])
+def tweetTest():
+    global id_operation
+    global listOperation
+
+        
+    user = str(request.form.get("user"))
+    message=str(request.form.get("message"))
+
+    #  create a new operation
+    id_operation += 1
+    operation = {
+        "id": id_operation,
+        "user": user,
+        "message": message,
+        "date": datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    }
+    #  add the operation to the list
+    listOperation.append(operation)
+    #  return the operation
+    return operation
+
 # get all the tweets
 @app.route('/tweets', methods=['GET'])
 def tweets():
