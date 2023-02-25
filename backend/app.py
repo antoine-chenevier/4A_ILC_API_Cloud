@@ -18,7 +18,7 @@ def tweetTest():
     global id_operation
     global listOperation
 
-        
+    #  get the data from the request      
     user = str(request.form.get("user"))
     message=str(request.form.get("message"))
 
@@ -32,7 +32,7 @@ def tweetTest():
     }
     #  add the operation to the list
     listOperation.append(operation)
-    r.add(user, message)
+    #r.add(user, message)
     #  return the operation
     return operation
 
