@@ -1,8 +1,5 @@
 # ILC 4A API CLOUD
 
-By **Christian Hasbani** and **Antoine Chenevier**
-
-Student at ESIREM in 4A ILC
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
@@ -40,6 +37,8 @@ cd ILC4A_API_CLOUD
 
 ## Authors
 
-- **Christian Hasbani** - [christianhasbani]
+- [christianhasbani](https://github.com/ChristianHasbani)
 
-- **Antoine Chenevier** - [AntoineChenevier]
+- [AntoineChenevier](https://github.com/antoine-chenevier)
+
+Student at ESIREM in 4A ILC
