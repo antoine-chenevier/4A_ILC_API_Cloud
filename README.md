@@ -1,8 +1,5 @@
 # ILC 4A API CLOUD
 
-
-[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
-
 ## Introduction
 
 This is the ILC 4A API Cloud. It is a cloud-based API that allows you to access the ILC 4A API from anywhere. It is a RESTful API that uses JSON for data exchange.
@@ -31,7 +28,7 @@ cd ILC4A_API_CLOUD
 
 ## License
 
-[Python Software Foundation License](https://docs.python.org/3/license.html)
+[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
 [![forthebadge](http://ForTheBadge.com/images/badges/built-with-love.svg)](http://ForTheBadge.com)
 
