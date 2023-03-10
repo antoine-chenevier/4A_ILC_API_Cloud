@@ -15,6 +15,8 @@ app = Flask(__name__)
 # tweet
 @app.route('/tweet', methods=['POST'])
 def tweet():
+    
+    global id_operation
 
     #  get the data from the request
     user = str(request.form.get("user"))
@@ -59,9 +61,10 @@ def tweetsUser(user):
     list = []
 
     # Get the data from a user
-    message = r.get(user)
-    message = str(message)
-    list.append(message)
+    for i in r.scan_iter(match=user):
+        message = r.get(i)
+        message = str(message)
+        list.append(message)
 
     #  filter the tweets of the user
     return str(list)
@@ -101,5 +104,3 @@ def tweetsHashtag(hashtag):
         if(hashtag in message):
             list.append(message)
     return str(list)
-    
-
