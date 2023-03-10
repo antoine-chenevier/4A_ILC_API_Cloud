@@ -1,8 +1,8 @@
 from flask import Flask, request
 from datetime import datetime
 import pandas as pd
-
 import redis
+
 r = redis.Redis(host='localhost', port=6379, db=0)
 
 app = Flask(__name__)
