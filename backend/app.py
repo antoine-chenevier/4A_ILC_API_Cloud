@@ -4,6 +4,7 @@ import pandas as pd
 import redis
 
 r = redis.Redis(host='localhost', port=6379, db=0)
+r1 = redis.Redis(host='localhost', port=6379, db=1)
 
 app = Flask(__name__)
 
@@ -14,9 +15,25 @@ listOperation = []
 
 # tweet
 @app.route('/tweet', methods=['POST'])
-def tweetTest():
+def tweet():
     global id_operation
     global listOperation
+      #  get the data from the request
+    user = str(request.form.get("user"))
+    message=str(request.form.get("message"))
+    #  save the tweet in list
+    id_operation += 1
+    date = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    operation = {
+        "id": id_operation,
+        "user": user,
+        "message": message,
+        "date": date
+    }
+    listOperation.append(operation)
+    r.set(user,operation)
+    r1.set(date,operation)
+    return operation
 
 
 # get all the tweets
