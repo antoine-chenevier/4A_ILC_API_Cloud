@@ -10,9 +10,9 @@ id_operation = 0
 
 app = Flask(__name__)
 
-#  create a twitter like !
+#  Create a twitter like !
 
-# tweet
+# Tweet
 @app.route('/tweet', methods=['POST'])
 def tweet():
     
@@ -26,7 +26,7 @@ def tweet():
     id_operation += 1
     date = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     
-    #Create a json object
+    # Create a json object
     data = {
         "id": id_operation,
         "user": user,
@@ -34,10 +34,10 @@ def tweet():
         "date": date
     }
     
-    #Json to string
+    # Json to string
     data = json.dumps(data)
     
-    #Save in redis
+    # Save in redis
     r.set(user,data)
     r1.set(date,data)
 
@@ -55,6 +55,20 @@ def tweets():
         list.append(message)
     return str(list)
 
+# get all the tweets
+@app.route('/tweetsList', methods=['GET'])
+def tweetsList():
+    list = []
+
+    for i in r.scan_iter():
+        message = r.get(i)
+        message = message.decode("utf-8")
+        message = json.loads(message)
+        message = message["message"]
+        message = str(message)
+        list.append(message)
+    return str(list)
+
 # get the tweets of a user
 @app.route('/tweets/<user>', methods=['GET'])
 def tweetsUser(user):
@@ -68,6 +82,7 @@ def tweetsUser(user):
 
     #  filter the tweets of the user
     return str(list)
+
 
 # retweet a tweet
 @app.route('/retweet', methods=['POST'])
@@ -88,6 +103,7 @@ def retweet():
 
     #  return the operation
     return operation
+
 
 # get the tweets for a hashtag
 @app.route('/tweetsHashtag/<hashtag>', methods=['GET'])
