@@ -6,18 +6,15 @@ import json
 r = redis.Redis(host='localhost', port=6379, db=0)
 r1 = redis.Redis(host='localhost', port=6379, db=1)
 
-app = Flask(__name__)
-
 id_operation = 0
-listOperation = []
+
+app = Flask(__name__)
 
 #  create a twitter like !
 
 # tweet
 @app.route('/tweet', methods=['POST'])
 def tweet():
-    global id_operation
-    global listOperation
 
     #  get the data from the request
     user = str(request.form.get("user"))
@@ -52,7 +49,7 @@ def tweets():
 
     for i in r.scan_iter():
         message = r.get(i)
-        message= str(message)
+        message = str(message)
         list.append(message)
     return str(list)
 
@@ -60,15 +57,12 @@ def tweets():
 @app.route('/tweets/<user>', methods=['GET'])
 def tweetsUser(user):
     list = []
+
     # Get the data from a user
-    for i in r.scan_iter():
-       
-        message = r.get(i)
-        message = str(message)
-        #  filter the tweets of the user
-        value = "user:" + user
-        if(value in message):
-            list.append(message)
+    message = r.get(user)
+    message = str(message)
+    list.append(message)
+
     #  filter the tweets of the user
     return str(list)
 
@@ -88,7 +82,7 @@ def retweet():
         "date": datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     }
     #  add the operation to the list
-    listOperation.append(operation)
+
     #  return the operation
     return operation
 
