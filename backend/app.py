@@ -41,7 +41,7 @@ def tweet():
     r.set(user,data)
     r1.set(date,data)
 
-    return data
+    return data + "\n"
 
 
 # get all the tweets
@@ -49,11 +49,11 @@ def tweet():
 def tweets():
     list = []
 
-    for i in r.scan_iter():
-        message = r.get(i)
+    for i in r1.scan_iter():
+        message = r1.get(i)
         message = str(message)
         list.append(message)
-    return str(list)
+    return str(list) + "\n"
 
 # get all the tweets
 @app.route('/tweetsList', methods=['GET'])
@@ -61,13 +61,14 @@ def tweetsList():
     list = []
 
     for i in r.scan_iter():
-        message = r.get(i)
-        message = message.decode("utf-8")
-        message = json.loads(message)
-        message = message["message"]
-        message = str(message)
-        list.append(message)
-    return str(list)
+        tweet = r.get(i)
+        tweeet = message.decode("utf-8")
+        tweet = json.loads(message)
+        message = tweet["message"]
+        user = tweet["user"]
+        load = str(message) + " by " + str(user)
+        list.append(load)
+    return str(list) + "\n"
 
 # get the tweets of a user
 @app.route('/tweets/<user>', methods=['GET'])
@@ -81,7 +82,7 @@ def tweetsUser(user):
         list.append(message)
 
     #  filter the tweets of the user
-    return str(list)
+    return str(list) + "\n"
 
 
 # retweet a tweet
@@ -102,7 +103,7 @@ def retweet():
     #  add the operation to the list
 
     #  return the operation
-    return operation
+    return operation + "\n"
 
 
 # get the tweets for a hashtag
@@ -119,4 +120,4 @@ def tweetsHashtag(hashtag):
         # get the hastag 
         if(hashtag in message):
             list.append(message)
-    return str(list)
+    return str(list) + "\n"
