@@ -3,8 +3,8 @@ from datetime import datetime
 import redis
 import json
 
-r = redis.Redis(host='localhost', port=6379, db=0)
-r1 = redis.Redis(host='localhost', port=6379, db=1)
+r = redis.Redis(host='localhost', port=6379, db=0, decode_responses=True)
+r1 = redis.Redis(host='localhost', port=6379, db=1,decode_responses=True)
 
 id_operation = 0
 
@@ -17,6 +17,7 @@ app = Flask(__name__)
 def tweet():
     
     global id_operation
+    listMessage = []
 
     #  get the data from the request
     user = str(request.form.get("user"))
@@ -37,8 +38,15 @@ def tweet():
     # Json to string
     data = json.dumps(data)
     
+    # Get the data from a user
+    for i in r.scan_iter(match=user):
+        message = r.get(i)
+        message = str(message)
+        listMessage = message + data
+  
     # Save in redis
-    r.set(user,data)
+    listMessage = str(listMessage)
+    r.set(user,listMessage)
     r1.set(date,data)
 
     return data + "\n"
@@ -47,22 +55,22 @@ def tweet():
 # get all the tweets
 @app.route('/tweets', methods=['GET'])
 def tweets():
+   
     list = []
 
     for i in r1.scan_iter():
         message = r1.get(i)
-        message = str(message)
         list.append(message)
     return str(list) + "\n"
 
 # get all the tweets
 @app.route('/tweetsList', methods=['GET'])
 def tweetsList():
+    
     list = []
 
     for i in r.scan_iter():
         tweet = r.get(i)
-        tweeet = message.decode("utf-8")
         tweet = json.loads(message)
         message = tweet["message"]
         user = tweet["user"]
@@ -73,21 +81,19 @@ def tweetsList():
 # get the tweets of a user
 @app.route('/tweets/<user>', methods=['GET'])
 def tweetsUser(user):
-    list = []
 
     # Get the data from a user
     for i in r.scan_iter(match=user):
         message = r.get(i)
-        message = str(message)
-        list.append(message)
-
+        
     #  filter the tweets of the user
-    return str(list) + "\n"
+    return message + "\n"
 
 
 # retweet a tweet
 @app.route('/retweet', methods=['POST'])
 def retweet():
+   
     #  get the data from the request
     user = str(request.form.get("user"))
     #  get the tweet from redis
