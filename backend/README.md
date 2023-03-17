@@ -3,6 +3,10 @@
 
 This is a simple Flask app that implements a Twitter-like functionality. Users can create and view tweets, save and retweet existing tweets, and view tweets by hashtag.
 
+Ce code est un exemple d'application web en utilisant Flask, une librairie Python pour créer des applications web.
+
+L'application crée un système de "tweets" similaire à Twitter en utilisant Redis, une base de données NoSQL en mémoire.
+
 ## Dependencies
 
 To use this app, you'll need the following dependencies:
@@ -52,33 +56,6 @@ Returns a JSON object with all of the tweets created by a specific user.
 curl -X GET http://localhost:5000/tweets/<user>
 ```
 
-#### `POST /saveTweet`
-
-Saves a tweet in Redis. The request should contain JSON data with the following fields:
-
-- `user`: The username of the user creating the tweet.
-- `message`: The content of the tweet.
-
-Returns a JSON object with a success message.
-
-```bash
-curl -X POST http://localhost:5000/saveTweet
-```
-
-#### `POST /attributeTweet`
-
-Attributes a tweet to a user. The request should contain JSON data with the following field:
-
-- `user`: The username of the user attributing the tweet.
-
-Retrieves the tweet from Redis and creates a new tweet with the same content, attributing it to the specified user.
-
-Returns a JSON object with the details of the new tweet.
-
-```bash
-curl -X POST http://localhost:5000/attributeTweet
-```
-
 #### `POST /retweet`
 
 Retweets a tweet. The request should contain JSON data with the following field:
@@ -102,7 +79,6 @@ curl -X GET http://localhost:5000/tweetsHashtag/<hashtag>
 ```
 
 ## Docker
-
 
 ### `Build docker file`
 
@@ -129,3 +105,13 @@ Which will show the following result
 CONTAINER ID   IMAGE               COMMAND                  CREATED         STATUS         PORTS                                       NAMES
 c3fa20e70792   backend-flask-app   "flask run --host 0.…"   9 minutes ago   Up 9 minutes   0.0.0.0:5000->5000/tcp, :::5000->5000/tcp   stoic_sanderson
 ```
+
+## Configuration de Redis
+
+Le code utilise Redis comme base de données. Il faut installer Redis pour pouvoir exécuter l'application.
+
+Par défaut, l'application utilise une base de données Redis locale avec le port 6379. Si vous avez une configuration différente, vous pouvez la changer dans le code en modifiant les valeurs des variables d'environnement.
+
+## Auteur
+
+Ce code a été développé par antoine pour le cours de Cloud Computing de l'ESIREM.

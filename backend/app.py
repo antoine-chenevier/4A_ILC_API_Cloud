@@ -16,6 +16,7 @@ app = Flask(__name__)
 @app.route('/tweet', methods=['POST'])
 def tweet():
     
+    # Init variable
     global id_operation
     listMessage = []
 
@@ -56,27 +57,15 @@ def tweet():
 @app.route('/tweets', methods=['GET'])
 def tweets():
    
+   # Init variable
     list = []
 
+    # Get the data
     for i in r1.scan_iter():
         message = r1.get(i)
         list.append(message)
     return str(list) + "\n"
 
-# get all the tweets
-@app.route('/tweetsList', methods=['GET'])
-def tweetsList():
-    
-    list = []
-
-    for i in r.scan_iter():
-        tweet = r.get(i)
-        tweet = json.loads(message)
-        message = tweet["message"]
-        user = tweet["user"]
-        load = str(message) + " by " + str(user)
-        list.append(load)
-    return str(list) + "\n"
 
 # get the tweets of a user
 @app.route('/tweets/<user>', methods=['GET'])
@@ -91,7 +80,7 @@ def tweetsUser(user):
 
 
 # retweet a tweet
-@app.route('/retweet', methods=['POST'])
+@app.route('/retweet/', methods=['POST'])
 def retweet():
    
     #  get the data from the request
@@ -115,6 +104,8 @@ def retweet():
 # get the tweets for a hashtag
 @app.route('/tweetsHashtag/<hashtag>', methods=['GET'])
 def tweetsHashtag(hashtag):
+    
+    # Init variable
     list = []
     hashtag = "#" + hashtag
 
@@ -123,6 +114,7 @@ def tweetsHashtag(hashtag):
        
         message = r.get(i)
         message = str(message)
+       
         # get the hastag 
         if(hashtag in message):
             list.append(message)
