@@ -101,6 +101,8 @@ Returns a JSON object with all of the tweets that contain the specified hashtag.
 curl -X GET http://localhost:5000/tweetsHashtag/<hashtag>
 ```
 
+## Docker
+
 
 ### `Build docker file`
 
@@ -109,7 +111,6 @@ Building and compiling the docker file
 ```bash
 docker build -t backend-flask-app . 
 ```
-## Docker
 
 ### `Run the docker image`
 Here we want to run our docker container to start the flask app
