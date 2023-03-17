@@ -31,7 +31,7 @@ docker build -t frontend-react-app .
 Here we want to run our docker container to start the flask app
 
 ```bash
-sudo docker run -it -p 8080:8080 -d frontend-react-app
+sudo docker run -it -p 3000:3000 -d frontend-react-app
 ```
 
 ### `Checking if the docker file is running`
