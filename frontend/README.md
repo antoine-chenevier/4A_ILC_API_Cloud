@@ -7,7 +7,13 @@ This is the frontend for the project.
 ## Creating the application
 We use this create-react-app to create a react application
 ```bash
+sudo create-react-app twitter-react-app
+```
 
+## Starting the react application
+We'll start our react application using npm start command
+```bash
+sudo npm start 
 ```
 
 
@@ -25,7 +31,7 @@ docker build -t frontend-react-app .
 Here we want to run our docker container to start the flask app
 
 ```bash
-sudo docker run -it -p 5000:5000 -d backend-flask-app
+sudo docker run -it -p 8080:8080 -d frontend-react-app
 ```
 
 ### `Checking if the docker file is running`
