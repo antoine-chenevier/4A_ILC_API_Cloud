@@ -7,7 +7,7 @@ This is the frontend for the project.
 ## Creating the application
 We use this create-react-app to create a react application
 ```bash
-
+sudo create-react-app twitter-react-app
 ```
 
 
