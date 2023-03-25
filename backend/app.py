@@ -2,6 +2,8 @@ from flask import Flask, request
 from datetime import datetime
 import redis
 import json
+from flask_cors import CORS
+from flask import jsonify
 
 r = redis.Redis(host='localhost', port=6379, db=0, decode_responses=True)
 r1 = redis.Redis(host='localhost', port=6379, db=1,decode_responses=True)
@@ -9,6 +11,7 @@ r1 = redis.Redis(host='localhost', port=6379, db=1,decode_responses=True)
 id_operation = 0
 
 app = Flask(__name__)
+CORS(app,origins=['http://localhost:3000','http://localhost:5000']) # Use the CORS function to allow cross-origin requests
 
 #  Create a twitter like !
 
@@ -64,7 +67,9 @@ def tweets():
     for i in r1.scan_iter():
         message = r1.get(i)
         list.append(message)
-    return str(list) + "\n"
+    response = jsonify(str(list) + "\n") # Change the object to json
+    response.headers.add('Access-Control-Allow-Origin','*');
+    return response
 
 
 # get the tweets of a user

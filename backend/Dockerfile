@@ -5,6 +5,8 @@ RUN apt-get install python3-pip -y
 RUN pip install flask
 RUN pip install pandas
 RUN pip install redis
+RUN pip install flask-cors
+
 
 COPY . .
 
