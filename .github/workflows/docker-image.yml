@@ -20,5 +20,5 @@ jobs:
       working-directory: backend
       
     - name: Build the frontend Docker image
-      run: docker build . --file Dockerfile --tag frontend:$(date +%s)
+      run: docker build . --file Dockerfile --tag frontend:$(date +%s) --build-arg PACKAGE_JSON=./frontend/twitter-react-app/package.json
       working-directory: frontend
