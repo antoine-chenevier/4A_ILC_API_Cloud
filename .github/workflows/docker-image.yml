@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Build the Docker images
+    - name: Build the backend Docker images
       run: docker build . --file Dockerfile --tag backend:$(date +%s)
       working-directory: backend
       
