@@ -41,6 +41,6 @@ docker ps
 ```
 Which will show the following result
 ```bash
-CONTAINER ID   IMAGE               COMMAND                  CREATED         STATUS         PORTS                                       NAMES
-c3fa20e70792   backend-flask-app   "flask run --host 0.…"   9 minutes ago   Up 9 minutes   0.0.0.0:5000->5000/tcp, :::5000->5000/tcp   stoic_sanderson
+CONTAINER ID   IMAGE                COMMAND                  CREATED          STATUS          PORTS                                       NAMES
+2fcda5b4081a   frontend-react-app   "docker-entrypoint.s…"   11 seconds ago   Up 10 seconds   0.0.0.0:3000->3000/tcp, :::3000->3000/tcp   brave_shannon
 ```
