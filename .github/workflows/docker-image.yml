@@ -15,10 +15,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Build the Docker images
+    - name: Build the backend Docker images
       run: docker build . --file Dockerfile --tag backend:$(date +%s)
       working-directory: backend
       
     - name: Build the frontend Docker image
-      run: docker build . --file frontend/Dockerfile --tag frontend:$(date +%s)
+      run: docker build . --file Dockerfile --tag frontend:$(date +%s) --build-arg PACKAGE_JSON=./frontend/twitter-react-app/package.json
       working-directory: frontend
