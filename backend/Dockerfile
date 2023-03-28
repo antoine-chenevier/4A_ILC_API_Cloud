@@ -8,7 +8,7 @@ RUN pip install redis
 RUN pip install flask-cors
 
 
-COPY . .
+COPY backend/ .
 
 ENV FLASK_APP=app.py
 ENV FLASK_DEBUG=True
