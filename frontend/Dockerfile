@@ -7,7 +7,7 @@ COPY frontend/package*.json ./
 # Install dependencies
 RUN npm install
 # Copy the rest of the application to the container
-COPY frontend/ .
+COPY . .
 # Set the working directory to the twitter-react-app folder
 WORKDIR /app/twitter-react-app
 # Build the application
