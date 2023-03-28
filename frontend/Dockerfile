@@ -3,11 +3,11 @@ FROM node:14-alpine
 # Set the working directory to /app
 WORKDIR /app
 # Copy the package.json and package-lock.json files to the container
-COPY path/to/package*.json ./
+COPY frontend/package*.json ./
 # Install dependencies
 RUN npm install
 # Copy the rest of the application to the container
-COPY . .
+COPY frontend/ .
 # Set the working directory to the twitter-react-app folder
 WORKDIR /app/twitter-react-app
 # Build the application
