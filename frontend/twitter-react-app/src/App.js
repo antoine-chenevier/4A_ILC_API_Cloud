@@ -1,8 +1,9 @@
 import "./App.css";
 import LeftPanel from "./Components/leftPanel/LeftPanel";
-import Home from "./Home";
-import Explore from "./Explore";
-import Profile from "./Profile";
+import Right_Panel from "./Components/Right_Panel/Right_Panel";
+import Home from "./Routes/Home";
+import Explore from "./Routes/Explore";
+import Profile from "./Routes/Profile";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
             <Route path="/Profile" element={<Profile />} />
           </Routes>
         </BrowserRouter>
+      </div>
+      <div className="right-bar">
+        <Right_Panel />
       </div>
     </div>
   );

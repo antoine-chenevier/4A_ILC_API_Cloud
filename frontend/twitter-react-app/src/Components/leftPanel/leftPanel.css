@@ -1,6 +1,5 @@
 /* Sidebar container */
 .sidebar {
-    width: 300px;
     min-width: 50px;
     height: 100%;
     position: relative;
@@ -9,7 +8,6 @@
     left: 0;
     padding: 20px;
     overflow-y: auto;
-    border-right: 1px solid gray;
     min-height: 100vh;
   }
 
@@ -56,37 +54,4 @@
     background-color: #181818;
     border-radius: 10px;
   }
-  
-  /* Sidebar trending section */
-  .sidebar-trending {
-    margin-top: 20px;
-    border-top: 1px double gray;
-    border-width: 3px;
-  }
-  
-  .sidebar-trending-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color:#1da1f2;
-    text-align: center;
-  }
-  
-  .sidebar-trending-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .sidebar-trending-item span {
-    margin-left: 10px;
-    font-size: 16px;
-    color: #1da1f2;
-  }
-  
-  .sidebar-trending-item span:hover {
-    text-decoration: underline;
-    cursor:pointer
-  }
-  
   

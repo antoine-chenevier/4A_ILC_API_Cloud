@@ -1,0 +1,43 @@
+
+  /* Sidebar trending section */
+  .sidebar-trending {
+    min-width: 50px;
+    height: 100%;
+    position: relative;
+    background-color: #000000;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    overflow-y: auto;
+    min-height: 100vh;
+  }
+  
+  .sidebar-trending-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color:#1da1f2;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .sidebar-trending-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .sidebar-trending-item span {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #1da1f2;
+  }
+  
+  .sidebar-trending-item span:hover {
+    text-decoration: underline;
+    cursor:pointer
+  }
+  
+  

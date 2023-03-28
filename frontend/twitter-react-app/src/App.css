@@ -1,5 +1,5 @@
 html,
-body {
+.App {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -11,15 +11,26 @@ body {
   min-height: 100vh;
 }
 .left-bar {
-  width: 25%;
+  width: 20%;
   min-height: 100vh;
   height: 100%;
+  flex: 2;
 }
 
-.main-content {
-  margin-left: 10px;
+.right-bar{
+  width: 20%;
   min-height: 100vh;
   height: 100%;
   flex: 1;
+  max-width: 100px;
+}
+
+.main-content {
+  min-height: 100vh;
+  height: 100%;
+  flex: 3;
   color: #1da1f2;
+  border-right: gray solid thin;
+  border-left: gray solid thin;
+  max-width: 1200px;
 }

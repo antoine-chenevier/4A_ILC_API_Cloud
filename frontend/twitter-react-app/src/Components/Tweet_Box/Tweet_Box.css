@@ -1,0 +1,17 @@
+.message-box {
+    background-color: #000000;
+    border-top: 1px solid gray;
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .message-box h6{
+    color: #1da1f2;
+    
+  }
+
+  .message-box p {
+    font-size: 16px;
+    color: #FFFFFF  ;
+  }
+  
