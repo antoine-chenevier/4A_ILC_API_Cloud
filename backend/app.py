@@ -67,8 +67,7 @@ def tweets():
     for i in r1.scan_iter():
         message = r1.get(i)
         list.append(message)
-    jsonObj = {"list":list}
-    response = jsonify(jsonObj) # Change the object to json
+    response = jsonify(list) # Change the object to json
     response.headers.add('Access-Control-Allow-Origin','*');
     return response
 

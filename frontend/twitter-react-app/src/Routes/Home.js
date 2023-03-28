@@ -31,20 +31,13 @@ function getTweets() {
             '{"id": 2, "user": "None", "message": "None", "date": "25/03/2023 17:18:43"}',
           ],
         };
-        
+
         const parsedList = response.list.map((item) => JSON.parse(item));
 
-        // for (let item of parsedList) {
-        //   console.log(item.id, item.user, item.message, item.date);
-        // }
-
-        // if(data['list'] == response){
-        //   console.log("Equal");
-        // }else{
-        //   console.log("Not equal");
-        // }
-          console.log(data);
-          JSON.parse(data);
+        console.log(data);
+        const res = JSON.parse(data[0]);
+        console.log(res.id);
+        
       });
 
   fetchTweets();
