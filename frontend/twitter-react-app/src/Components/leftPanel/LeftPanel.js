@@ -15,9 +15,6 @@ function LeftPanel() {
         <li>
           <a href="/Explore">Explore</a>
         </li>
-        <li>
-          <a href="/Profile">Profile</a>
-        </li>
       </ul>
     </div>
   );

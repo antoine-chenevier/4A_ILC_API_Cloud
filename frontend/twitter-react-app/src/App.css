@@ -1,5 +1,4 @@
-html,
-.App {
+html, body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -8,29 +7,56 @@ html,
 
 .App {
   display: flex;
-  min-height: 100vh;
-}
-.left-bar {
-  width: 20%;
-  min-height: 100vh;
   height: 100%;
-  flex: 2;
 }
 
-.right-bar{
-  width: 20%;
-  min-height: 100vh;
-  height: 100%;
+.left-bar {
   flex: 1;
-  max-width: 100px;
+  min-width: 20%;
+  max-width: 300px;
+  background-color: #333333;
+  color: #000000;
+}
+
+.right-bar {
+  flex: 1;
+  min-width: 20%;
+  max-width: 300px;
+  background-color: #333333;
+  color: #000000;
 }
 
 .main-content {
-  min-height: 100vh;
-  height: 100%;
   flex: 3;
-  color: #1da1f2;
-  border-right: gray solid thin;
-  border-left: gray solid thin;
   max-width: 1200px;
+  padding: 20px;
+  background-color: #000000;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  color: #1da1f2;
 }
+
+
+@media only screen and (min-width: 768px) {
+  .left-bar {
+    flex-basis: 20%;
+    max-width: 300px;
+    min-height: 100%;
+    max-height: none;
+  }
+
+  .right-bar {
+    flex-basis: 20%;
+    max-width: 300px;
+    min-height: 100%;
+    max-height: none;
+  }
+
+  .main-content {
+    flex-basis: 60%;
+    max-width: 60%;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+  }
+}
+

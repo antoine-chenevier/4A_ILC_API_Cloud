@@ -1,17 +1,43 @@
 .message-box {
-    background-color: #000000;
-    border-top: 1px solid gray;
-    padding: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .message-box h6{
-    color: #1da1f2;
-    
-  }
+  background-color: #1C1C1C;
+  border: 1px solid #333333;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
-  .message-box p {
-    font-size: 16px;
-    color: #FFFFFF  ;
-  }
-  
+.header {
+  background-color: #333333;
+  border-radius: 50%;
+  border-right: solid 5px #1da1f2;
+  border-top: solid 1px #1da1f2;
+  border-bottom: solid 1px #1da1f2;
+  width: 200px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.header h6 {
+  color: #ffffff;
+  margin: 0;
+  font-size: medium;
+}
+
+.header p {
+  color: #ffffff;
+  margin: 0;
+  font-size: small;
+}
+
+.message p {
+  font-size: 16px;
+  color: #ffffff;
+  margin: 0;
+  font-size: small;
+}

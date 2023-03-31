@@ -63,6 +63,7 @@ def tweets():
    # Init variable
     list = []
     
+
     # Get the data
     for i in r1.scan_iter():
         message = r1.get(i)
