@@ -15,7 +15,7 @@
   border-right: solid 5px #1da1f2;
   border-top: solid 1px #1da1f2;
   border-bottom: solid 1px #1da1f2;
-  width: 200px;
+  width: 150px;
   height: 60px;
   display: flex;
   justify-content: center;
@@ -26,18 +26,20 @@
 .header h6 {
   color: #ffffff;
   margin: 0;
-  font-size: medium;
+  font-size: large;
+  padding:15px;
 }
 
-.header p {
-  color: #ffffff;
+.message-date{
+  color: #ffffff85;
   margin: 0;
   font-size: small;
+  margin-bottom: 10px;
 }
 
-.message p {
+.message-text{
   font-size: 16px;
   color: #ffffff;
   margin: 0;
-  font-size: small;
+  font-size: nmedium;
 }

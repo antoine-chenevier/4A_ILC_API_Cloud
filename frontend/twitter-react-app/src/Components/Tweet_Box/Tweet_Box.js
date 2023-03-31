@@ -8,10 +8,10 @@ const Tweet_Box = (props) => {
         <h6>
           {props.user}
         </h6>
-        <p> <b>@</b> {props.date}</p>
       </div>
       <div className="message">
-        <p>{props.message}</p>
+        <p className="message-date"> tweeted <b>@</b> <i>{props.date}</i></p>
+        <p className="message-text">{props.message}</p>
       </div>
     </div>
   );

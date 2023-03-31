@@ -4,16 +4,16 @@ import useFetchAllTweets from "../Hooks/useFetchAllTweets";
 import "./Home.css";
 
 function Home() {
+  const tweets = useFetchAllTweets();
   return (
     <div className="Home">
       <h1>HOME</h1>
       {tweets ? (
         tweets.map((tweet) => (
-          console.log(tweet),
           <Tweet_Box key={tweet.id} id={tweet.id} user={tweet.user} message={tweet.message} date={tweet.date}/>
         ))
       ) : (
-        <p>Loading tweets...</p>
+        <h1>LOADING TWEETS...</h1>
       )}
     </div>
   );
