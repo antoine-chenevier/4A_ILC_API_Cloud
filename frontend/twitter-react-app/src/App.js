@@ -14,7 +14,7 @@ function App() {
       <div className="main-content">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home />}/>
             <Route path="/Explore" element={<Explore />} />
           </Routes>
         </BrowserRouter>

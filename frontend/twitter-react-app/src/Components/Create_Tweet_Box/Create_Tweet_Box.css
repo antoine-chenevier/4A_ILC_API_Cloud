@@ -1,0 +1,71 @@
+.create-tweet-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #1C1C1C;
+  }
+  
+  .create-tweet-box-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    width: 100%;
+  }
+  .create-tweet-box-header-text {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    align-items: start ;
+  }
+  
+  .create-tweet-box form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    justify-content: space-between; 
+  }
+  
+  .create-tweet-box-user,
+  .create-tweet-box-message {
+    background-color: #1C1C1C;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #888;
+    border-radius: 8px;
+    resize: none;
+    color: #fff;
+  }
+
+  .create-tweet-box-postBtn{
+    width: 100%;
+    display: flex;
+  }
+  
+  .create-tweet-box-postBtn-btn {
+    padding: 10px 20px;
+    background-color: #1da1f2;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+  }
+  
+  @media only screen and (min-width: 768px) {
+    .create-tweet-box form button {
+      margin-left: 10px;
+    }
+  }
+  
