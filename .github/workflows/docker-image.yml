@@ -19,4 +19,5 @@ jobs:
       run: docker build . --file backend/Dockerfile --tag backend:$(date +%s)
       
     - name: Build the frontend Docker image
-      run: docker build . --file frontend/Dockerfile --tag frontend:$(date +%s)
+      working-directory: ./frontend # Change working directory to frontend directory
+      run: docker build . --tag frontend:$(date +%s)
