@@ -3,8 +3,10 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin: 0;
-    
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 30px;
     padding: 20px;
     box-sizing: border-box;
     border: 1px solid #ccc;
@@ -47,10 +49,13 @@
     resize: none;
     color: #fff;
   }
-
-  .create-tweet-box-postBtn{
+  .create-tweet-box-message{
+    min-height: 100px;
+  }
+  .create-tweet-box-postBtn {
     width: 100%;
     display: flex;
+    justify-content: flex-end;
   }
   
   .create-tweet-box-postBtn-btn {
@@ -62,6 +67,7 @@
     cursor: pointer;
     align-items: center;
   }
+  
   
   @media only screen and (min-width: 768px) {
     .create-tweet-box form button {
