@@ -1,48 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Tweet_Box from "../Components/Tweet_Box/Tweet_Box";
-import useFetchTweetsByUser from "../Hooks/useFetchTweetsByUser";
-import useFetchTweetsByHashtag from "../Hooks/useFetchTweetsByHashtags";
 import "./Explore.css";
 
 function Explore() {
-  const [query, setQuery] = useState("");
-  const [searchType, setSearchType] = useState("");
   const [searchTweets, setSearchTweets] = useState([]);
-
-  const tweetsByHashtag = useFetchTweetsByHashtag(query);
-  const tweetsByUser = useFetchTweetsByUser(query);
-
-  useEffect(() => {
-    const fetchTweets = async () => {
-      if (!query) {
-        return;
-      }
-
-      const hashtagsRegex = /#\w+/g;
-      const hashtags = query.match(hashtagsRegex);
-
-      if (hashtags) {
-        setSearchType("hashtags");
-        setSearchTweets(tweetsByHashtag);
-      } else {
-        setSearchType("users");
-        setSearchTweets(tweetsByUser);
-      }
-    };
-
-    fetchTweets();
-  }, [query, searchType, tweetsByHashtag, tweetsByUser]);
-
+  const [searchQuery, setSearchQuery] = useState("");
+  
+  const handleSearch = async (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+    if (query.startsWith("#")) {
+      const hashtag = query.substring(1);
+      const tweets = await searchTweetsByHashtag(hashtag);
+      setSearchTweets(tweets);
+    } else {
+      const tweets = await searchTweetsByName(query);
+      setSearchTweets(tweets);
+    }
+  };
+  
   return (
     <div className="Explore">
       <input
         className="Explore-search"
         placeholder="Search for a tweet by name or by hashtag"
         type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={handleSearch}
       ></input>
-      {query !== "" && <h5>Search results for "{query}"</h5>}
+      {searchQuery && searchTweets && (
+        <p className="Explore-search-info">
+          Searching in tweets by {searchQuery.startsWith("#") ? "hashtag" : "name"} for "{searchQuery}"
+        </p>
+      )}
       {searchTweets ? (
         searchTweets.map((tweet) => (
           <Tweet_Box
@@ -61,3 +50,17 @@ function Explore() {
 }
 
 export default Explore;
+
+async function searchTweetsByHashtag(hashtag) {
+  const response = await fetch(`http://localhost:5000/tweetsHashtag/${hashtag}`);
+  const data = await response.json();
+  const arrayOfJsonObjects = data.map((jsonString) => JSON.parse(jsonString));
+  return arrayOfJsonObjects;
+}
+
+async function searchTweetsByName(name) {
+  const response = await fetch(`http://localhost:5000/tweets/${name}`);
+  const data = await response.json();
+  const arrayOfJsonObjects = data.map((jsonString) => JSON.parse(jsonString));
+  return arrayOfJsonObjects;
+}

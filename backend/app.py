@@ -102,7 +102,7 @@ def retweet():
         "date": datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     }
     #  add the operation to the list
-
+    
     #  return the operation
     return operation + "\n"
 
