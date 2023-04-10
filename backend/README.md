@@ -119,4 +119,5 @@ Par défaut, l'application utilise une base de données Redis locale avec le por
 
 ## Auteur
 
-Ce code a été développé par antoine pour le cours de Cloud Computing de l'ESIREM.
+Ce code a été développé par antoine pour le cours de Cloud Computing de 4 eme année à ESIREM.
+test
