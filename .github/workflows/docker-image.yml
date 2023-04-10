@@ -20,5 +20,5 @@ jobs:
       
     - name: Build the frontend Docker image
       working-directory: ./frontend
-      run: docker build . --file frontend/Dockerfile --tag frontend:$(date +%s)
+      run: docker build . --file Dockerfile --tag frontend:$(date +%s)
 
