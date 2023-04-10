@@ -26,6 +26,14 @@ cd ILC4A_API_CLOUD
 
 ### Examples
 
+## Github Actions
+* docker-image.yml
+* python-package-conda.yml
+
+docker-image.yml is a github action file for building the containers for the frontend and the backend
+
+python-pakcage-conda.yml is still not working properly
+
 ## License
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
