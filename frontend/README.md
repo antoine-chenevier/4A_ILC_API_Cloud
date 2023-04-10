@@ -36,6 +36,14 @@ This is done by following the following steps:
  - Get this data and fill it each component dynamically 
  - Get the list of tweets and display it dynamically on the HOME page
 
+### Explore Page
+Here the user enters in the search bar a name or a hashtag to search throught the tweets.
+
+#### Searching by name
+The user enters the name of the auther who he wants to see all the tweets for, and this will call a function that will send an HTTP GET request to an endpoint "localhost:5000/tweets/<user>" and will return a JSON response with all the tweets for that author
+ 
+ #### Searching by hashtag 
+ The user enters the hashtag he wants to search the tweets with and this will call a function to send an HTTP GET request to an endpoint "localhost:5000/tweetsHashtag/<hastag>" and this will return a list of JSON objects with all the tweets that contain the entered hashtag by the user
 
 ## Docker
 
